@@ -6,7 +6,7 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:18:46 by matmagal          #+#    #+#             */
-/*   Updated: 2025/08/07 17:23:37 by matmagal         ###   ########.fr       */
+/*   Updated: 2025/10/19 16:18:00 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,3 @@ int	ft_printf(const char *format, ...)
 	va_end(lst_args);
 	return (len);
 }
-

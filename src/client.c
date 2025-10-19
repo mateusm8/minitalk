@@ -6,7 +6,7 @@
 /*   By: matmagal <matmagal@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 20:09:56 by matmagal          #+#    #+#             */
-/*   Updated: 2025/10/15 16:52:47 by matmagal         ###   ########.fr       */
+/*   Updated: 2025/10/19 16:10:38 by matmagal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	send_bit(int pid, char c)
 {
 	int	bit;
 	int	counter;
-	
+
 	counter = 0;
 	while (counter < 8)
 	{
@@ -25,7 +25,7 @@ void	send_bit(int pid, char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(100);
+		usleep(350);
 		counter++;
 	}
 }
@@ -37,7 +37,7 @@ void	send_char(int pid, char *str)
 	i = 0;
 	while (str[i])
 	{
-		send_bit(pid,  str[i]);
+		send_bit(pid, str[i]);
 		i++;
 	}
 	send_bit(pid, '\0');
@@ -47,10 +47,13 @@ void	send_char(int pid, char *str)
 int	main(int ac, char **av)
 {
 	char	*str;
-	
+
 	if (ac == 3)
 	{
 		str = ft_strdup(av[2]);
+		if ((ft_strlen(str) == 0)
+			|| (ft_atoi(av[1]) == -1) || ft_atoi(av[1]) == 0)
+			return (0);
 		send_char(ft_atoi(av[1]), str);
 	}
 }
